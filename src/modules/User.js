@@ -46,8 +46,20 @@ export default class User {
     const pElements = this.userElement.querySelectorAll("p");
     pElements.forEach((p) => {
       p.style.color = this.isPresent ? "#ffffff" : "#000000";
+      this.updateCounter();
     });
   }
+
+  updateCounter() {
+    const counterElement = document.querySelector(".counter");
+    const totalPresentUsers = document.querySelectorAll(
+      '.user[data-present="true"]'
+    ).length;
+    const totalUsers = document.querySelectorAll(".user").length;
+    if (counterElement) {
+      counterElement.textContent = `${totalPresentUsers}/${totalUsers} people are here`;
+    }
+  };
 
   addClickListener() {
     this.userElement.addEventListener("click", () => this.togglePresence());
