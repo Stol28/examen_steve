@@ -16,6 +16,7 @@ function displayUsers() {
   users.forEach(user => {
     user.generateUserElement();
     user.render();
+    updateButtonState('sort--name');
   });
 }
 
@@ -28,7 +29,6 @@ function sortByName() {
   users.sort((a, b) => a.lastName.localeCompare(b.lastName)); // Suppose que chaque instance de User a une propriété `lastName`
   displayUsers();
 }
-updateButtonState('sort--name');
 
 // Ajout des écouteurs d'événements aux boutons
 document.getElementById('sort--name').addEventListener('click', () => {
