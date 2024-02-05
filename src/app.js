@@ -7,7 +7,7 @@ async function fetchUsers() {
   const response = await fetch('https://randomuser.me/api/?results=20');
   const data = await response.json();
   users = data.results.map(userData => new User(userData)); // Crée et stocke les instances de User
-  displayUsers(); // Affiche les utilisateurs initialement par nom
+  displayUsers(sortByName()); // Affiche les utilisateurs initialement par nom
 }
 
 function displayUsers() {
